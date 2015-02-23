@@ -37,12 +37,6 @@ namespace CrowdSourcingWebApplication.Web.Controllers
             tenant.Role = null;
             tenant.enabled = true;
 
-            // GENERATION OF IDEAS AND COMMENTS
-            
-
-
-             //END OF GENERATION OF IDEAS AND COMMENTS
-
 
             // GENERATION OF USERS
             
@@ -103,10 +97,6 @@ namespace CrowdSourcingWebApplication.Web.Controllers
             //END OF GENERATION USERS
 
             /*
-            // category 
-            category.CategoryId = 1;
-            category.TenantMail = "tenant@esprit.tn";
-            category.Title = "Ordering";
 
             // Log
             log.LogId = 1;
@@ -116,10 +106,6 @@ namespace CrowdSourcingWebApplication.Web.Controllers
             log.EventType = "Subscription";
              
              */
-
-             
-
-
 
 
         }
@@ -131,7 +117,10 @@ namespace CrowdSourcingWebApplication.Web.Controllers
         //[Route("Admin/Panel")]
         public ActionResult Index()
         {
+            IdeaHandler handler = new IdeaHandler();
+            IEnumerable<Idea> ideas = handler.RetrieveIdeas(tenant.Email);
             Session["numusers"] = endusers.Count;
+            Session["totalideas"] = ideas.Count();
             return View();
             
         }
