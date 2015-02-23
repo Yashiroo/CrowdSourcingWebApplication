@@ -66,7 +66,7 @@
     <aside class="left-panel">
 
         <div class="user text-center">
-            <img src="~/Content/assets/images/avtar/user.png" class="img-circle" alt="...">
+            <img src="~/Content/assets/images/avtar/tenant.jpg" class="img-circle" alt="...">
             <h4 class="user-name">Tenant Name</h4>
 
             <div class="dropdown user-login">
@@ -319,30 +319,37 @@
                                 <fieldset>
 
                                     <div class="form-group">
-                                        <div class="col-sm-7">
-                                            <div class="form-group">
-                                                <label class="col-sm-2 control-label">@Html.LabelFor(model => model.Title)</label>
-                                                <div class="col-sm-7">
+                                    
+                                                
+                                                <div class="col-sm-7 @ViewBag.error">
+                                                    <label class="col-sm-1 ">Title</label>
+                                                    @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control form-control-flat ", @name = "email" } }) 
+                                                    <i data-bv-icon-for="captcha" class="form-control-feedback glyphicon @ViewBag.glyphicon" style="display: flex;"></i>
+                                                    
+                                                    <div class="has-error col-md-offset-0">
+                                                        <small data-bv-result="INVALID" data-bv-for="captcha" data-bv-validator="callback" class="help-block has-error" style="display: block;"> @ViewBag.existing</small>
+                                                    </div>
 
-                                                    @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control form-control-flat" } })
-                                                </div><input type="submit" class="btn btn-purple" value="submit" />
+                                                    <br /><input type="submit" class="btn btn-purple" value="Submit" />
+                                                </div>
+                                            
+
+                                                
 
 
 
-
-                                            </div>
-                                        </div>
 
 
 
 
                                     </div>
-
+                                    
 
 
 
 
                                 </fieldset>
+
                             </form>
 
 

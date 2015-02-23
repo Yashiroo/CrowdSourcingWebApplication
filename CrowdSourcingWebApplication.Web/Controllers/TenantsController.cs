@@ -148,6 +148,8 @@ namespace CrowdSourcingWebApplication.Web.Controllers
             IEnumerable<Idea> ideas = handler.RetrieveIdeas(tenant.Email);
             LogHandler lhandler = new LogHandler();
             IEnumerable<Log> logs = lhandler.GetLogsForTenant(tenant.Email);
+            logs = logs.OrderByDescending(x => x.EventDate);
+
             Session["logs"] = logs;
             Session["numusers"] = endusers.Count;
             Session["totalideas"] = ideas.Count();
@@ -202,7 +204,9 @@ namespace CrowdSourcingWebApplication.Web.Controllers
 
                 if (code == System.Net.HttpStatusCode.NoContent | code == System.Net.HttpStatusCode.NotAcceptable)
                 {
-                    
+                    ViewBag.glyphicon = "glyphicon-remove";
+                    ViewBag.error = "has-error";
+                    ViewBag.existing = "This category already exists. Please try typing in a new category.";
                     return View();
                 }
                 LogHandler lhandler = new LogHandler();
