@@ -126,6 +126,7 @@
     </Compile>
     <Compile Include="Handlers\CategoryHandler.cs" />
     <Compile Include="Handlers\IdeaHandler.cs" />
+    <Compile Include="Handlers\LogHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

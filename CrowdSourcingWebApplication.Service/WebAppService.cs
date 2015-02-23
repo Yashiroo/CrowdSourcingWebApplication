@@ -11,22 +11,39 @@ namespace CrowdSourcingWebApplication.Service
 
         
 
-        public int[] GetEndusersStatsPer6Months(List<object> endusers)
+        public int[] GetEndusersStatsThisYear(List<object> endusers)
         {
-	        int[] months = new int[12]; 
+	        int[] months = new int[12];
             
             foreach(EndUser user in endusers)
             {
-                int month = user.SubscriptionDate.Month;
-                months[month] += 1;
-
+                if (user.SubscriptionDate.Year == DateTime.Now.Year)
+                {
+                    int month = user.SubscriptionDate.Month - 1;
+                    months[month] += 1;
+                }
             }
 
             return months;
         }
 
+        public int[] GetEndusersStatsLastYear(List<object> endusers)
+        {
+            int[] months = new int[12];
 
-        public object[] GetIdeasPerCategoryPer6Months(IEnumerable<Idea> ideas, IEnumerable<Category> categories)
+            foreach (EndUser user in endusers)
+            {
+                if (user.SubscriptionDate.Year == DateTime.Now.Year -1)
+                {
+                    int month = user.SubscriptionDate.Month - 1;
+                    months[month] += 1;
+                }
+            }
+
+            return months;
+        }
+
+        public object[] GetIdeasPerCategoryTotal(IEnumerable<Idea> ideas, IEnumerable<Category> categories)
         {
             int i = 0;
             string[] catNames = new string[categories.Count()];

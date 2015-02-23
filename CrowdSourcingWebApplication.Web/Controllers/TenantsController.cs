@@ -59,33 +59,33 @@ namespace CrowdSourcingWebApplication.Web.Controllers
                 endusers.Add(e8);
                 EndUser e9 = new EndUser(new DateTime(2015,1,2));
                 endusers.Add(e9);
-                EndUser e10 = new EndUser(new DateTime(2015,3,2));
+                EndUser e10 = new EndUser(new DateTime(2015,2,2));
                 endusers.Add(e10);
-                EndUser e11 = new EndUser(new DateTime(2015,3,2));
+                EndUser e11 = new EndUser(new DateTime(2015,2,2));
                 endusers.Add(e11);
-                EndUser e12 = new EndUser(new DateTime(2015,3,2));
+                EndUser e12 = new EndUser(new DateTime(2015,2,2));
                 endusers.Add(e12);
-                EndUser e13 = new EndUser(new DateTime(2015,3,2));
+                EndUser e13 = new EndUser(new DateTime(2015,2,2));
                 endusers.Add(e13);
-                EndUser e14 = new EndUser(new DateTime(2015,5,2));
+                EndUser e14 = new EndUser(new DateTime(2015,2,2));
                 endusers.Add(e14);
-                EndUser e15 = new EndUser(new DateTime(2015,5,2));
+                EndUser e15 = new EndUser(new DateTime(2015,2,2));
                 endusers.Add(e15);
-                EndUser e16 = new EndUser(new DateTime(2015,5,2));
+                EndUser e16 = new EndUser(new DateTime(2015,3,2));
                 endusers.Add(e16);
-                EndUser e17 = new EndUser(new DateTime(2015,5,2));
+                EndUser e17 = new EndUser(new DateTime(2015,3,2));
                 endusers.Add(e17);
-                EndUser e18 = new EndUser(new DateTime(2015,5,2));
+                EndUser e18 = new EndUser(new DateTime(2015,3,2));
                 endusers.Add(e18);
-                EndUser e19 = new EndUser(new DateTime(2015,5,2));
+                EndUser e19 = new EndUser(new DateTime(2015,4,2));
                 endusers.Add(e19);
-                EndUser e20 = new EndUser(new DateTime(2015,5,2));
+                EndUser e20 = new EndUser(new DateTime(2015,4,2));
                 endusers.Add(e20);
-                EndUser e21 = new EndUser(new DateTime(2015,5,2));
+                EndUser e21 = new EndUser(new DateTime(2015,4,2));
                 endusers.Add(e21);
-                EndUser e22 = new EndUser(new DateTime(2015,6,2));
+                EndUser e22 = new EndUser(new DateTime(2015,5,2));
                 endusers.Add(e22);
-                EndUser e23 = new EndUser(new DateTime(2015,6,2));
+                EndUser e23 = new EndUser(new DateTime(2015,5,2));
                 endusers.Add(e23);
                 EndUser e24 = new EndUser(new DateTime(2015,6,2));
                 endusers.Add(e24);
@@ -93,19 +93,46 @@ namespace CrowdSourcingWebApplication.Web.Controllers
                 endusers.Add(e25);
                 
 
+                EndUser e26 = new EndUser(new DateTime(2014, 8, 2));
+                endusers.Add(e26);
+                EndUser e27 = new EndUser(new DateTime(2014, 8, 2));
+                endusers.Add(e27);
+                EndUser e28 = new EndUser(new DateTime(2014, 8, 2));
+                endusers.Add(e28);
+                EndUser e29 = new EndUser(new DateTime(2014, 9, 2));
+                endusers.Add(e29);
+                EndUser e30 = new EndUser(new DateTime(2014, 9, 2));
+                endusers.Add(e30);
+                EndUser e31 = new EndUser(new DateTime(2014, 9, 2));
+                endusers.Add(e31);
+                EndUser e32 = new EndUser(new DateTime(2014, 9, 2));
+                endusers.Add(e32);
+                EndUser e33 = new EndUser(new DateTime(2014, 9, 2));
+                endusers.Add(e33);
+                EndUser e34 = new EndUser(new DateTime(2014, 11, 2));
+                endusers.Add(e34);
+                EndUser e35 = new EndUser(new DateTime(2014, 11, 2));
+                endusers.Add(e35);
+                EndUser e36 = new EndUser(new DateTime(2014, 11, 2));
+                endusers.Add(e36);
+                EndUser e37 = new EndUser(new DateTime(2014, 11, 2));
+                endusers.Add(e37);
+                EndUser e38 = new EndUser(new DateTime(2014, 11, 2));
+                endusers.Add(e38);
+                EndUser e39 = new EndUser(new DateTime(2014, 12, 2));
+                endusers.Add(e39);
+                EndUser e40 = new EndUser(new DateTime(2014, 12, 2));
+                endusers.Add(e40);
+                EndUser e41 = new EndUser(new DateTime(2014, 12, 2));
+                endusers.Add(e41);
+                EndUser e42 = new EndUser(new DateTime(2014, 12, 2));
+                endusers.Add(e42);
+                EndUser e43 = new EndUser(new DateTime(2014, 12, 2));
+                endusers.Add(e43);
+                
+
 
             //END OF GENERATION USERS
-
-            /*
-
-            // Log
-            log.LogId = 1;
-            log.TenantMail = "tenant@esprit.tn";
-            log.Event = "Tenant with username Lamjed.B and email tenant@esprit.tn has subscribed";
-            log.EventDate = DateTime.Today;
-            log.EventType = "Subscription";
-             
-             */
 
 
         }
@@ -119,6 +146,9 @@ namespace CrowdSourcingWebApplication.Web.Controllers
         {
             IdeaHandler handler = new IdeaHandler();
             IEnumerable<Idea> ideas = handler.RetrieveIdeas(tenant.Email);
+            LogHandler lhandler = new LogHandler();
+            IEnumerable<Log> logs = lhandler.GetLogsForTenant(tenant.Email);
+            Session["logs"] = logs;
             Session["numusers"] = endusers.Count;
             Session["totalideas"] = ideas.Count();
             return View();
@@ -175,7 +205,13 @@ namespace CrowdSourcingWebApplication.Web.Controllers
                     
                     return View();
                 }
-                    
+                LogHandler lhandler = new LogHandler();
+                Log log = new Log();
+                log.EventDate = DateTime.Now;
+                log.TenantMail = tenant.Email;
+                log.EventType = "Category";
+                log.Event = "You have added the category : "+category.Title;
+                lhandler.AddLog(log);
                 return RedirectToAction("Categories");
             }
                 
@@ -215,15 +251,18 @@ namespace CrowdSourcingWebApplication.Web.Controllers
         {
             
             service = new WebAppService();
-            int[] results = service.GetEndusersStatsPer6Months(endusers);
-            Session["results"] = results;
+            int[] thisyear = service.GetEndusersStatsThisYear(endusers);
+            int[] lastyear = service.GetEndusersStatsLastYear(endusers);
+            Session["thisyear"] = thisyear;
+            Session["last"] = lastyear;
+
             CategoryHandler chandler = new CategoryHandler();
             categories = chandler.GetCategory(tenant.Email);
             IdeaHandler handler = new IdeaHandler();
             IEnumerable<Idea> ideas = handler.RetrieveIdeas(tenant.Email);
             
 
-            object[] results2 = service.GetIdeasPerCategoryPer6Months(ideas, categories);
+            object[] results2 = service.GetIdeasPerCategoryTotal(ideas, categories);
             string[] catNames = (string[])results2[0];
             int[] catVals = (int[])results2[1];
             Session["multi"] = results2;

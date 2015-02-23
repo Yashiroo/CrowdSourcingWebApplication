@@ -86,8 +86,13 @@
         <nav class="navigation">
             <ul class="list-unstyled">
                 <li><a href=@Url.Action("Index")><i class="fa fa-bookmark-o"></i><span class="nav-label">Dashboard</span></a></li>
-                <li><a href=@Url.Action("TenantDetails")><i class="fa fa-bookmark-o"></i><span class="nav-label">Tenant</span></a></li>
-                <li>
+                <li class="active" class="has-submenu">
+                    <a href=@Url.Action("#")><i class="fa fa-bookmark-o"></i><span class="nav-label">Tenant</span></a>
+                    <ul class="list-unstyled">
+                        <li><a href=@Url.Action("TenantDetails")>My Information</a></li>
+                        <li><a href=@Url.Action("IdeaReviewers")>Idea Reviewers</a></li>
+                    </ul>
+                </li>                <li>
                     <a href="#"><i class="fa fa-comment-o"></i> <span class="nav-label">Templates</span></a>
                 </li>
                 <li class="has-submenu">
@@ -127,146 +132,13 @@
 
             <nav class=" navbar-default hidden-xs" role="navigation">
                 <ul class="nav navbar-nav">
-                    <li><a href="#">Link</a></li>
-                    <li class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">Dropdown <span class="caret"></span></a>
-                        <ul role="menu" class="dropdown-menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">One more separated link</a></li>
-                        </ul>
-                    </li>
+
                 </ul>
             </nav>
 
             <ul class="nav-toolbar">
-                <li class="dropdown">
-                    <a href="#" data-toggle="dropdown"><i class="fa fa-comments-o"></i> <span class="badge bg-warning">7</span></a>
-                    <div class="dropdown-menu md arrow pull-right panel panel-default arrow-top-right messages-dropdown">
-                        <div class="panel-heading">
-                            Messages
-                        </div>
-
-                        <div class="list-group">
-
-                            <a href="#" class="list-group-item">
-                                <div class="media">
-                                    <div class="user-status busy pull-left">
-                                        <img class="media-object img-circle pull-left" src="~/Content/assets/images/avtar/user2.png" alt="user#1" width="40">
-                                    </div>
-                                    <div class="media-body">
-                                        <h5 class="media-heading">Lorem ipsum dolor sit consect....</h5>
-                                        <small class="text-muted">23 Sec ago</small>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="#" class="list-group-item">
-                                <div class="media">
-                                    <div class="user-status offline pull-left">
-                                        <img class="media-object img-circle pull-left" src="~/Content/assets/images/avtar/user3.png" alt="user#1" width="40">
-                                    </div>
-                                    <div class="media-body">
-                                        <h5 class="media-heading">Nunc elementum, enim vitae</h5>
-                                        <small class="text-muted">23 Sec ago</small>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="#" class="list-group-item">
-                                <div class="media">
-                                    <div class="user-status invisibled pull-left">
-                                        <img class="media-object img-circle pull-left" src="~/Content/assets/images/avtar/user4.png" alt="user#1" width="40">
-                                    </div>
-                                    <div class="media-body">
-                                        <h5 class="media-heading">Praesent lacinia, arcu eget</h5>
-                                        <small class="text-muted">23 Sec ago</small>
-                                    </div>
-                                </div>
-                            </a>
-                            <a href="#" class="list-group-item">
-                                <div class="media">
-                                    <div class="user-status online pull-left">
-                                        <img class="media-object img-circle pull-left" src="~/Content/assets/images/avtar/user5.png" alt="user#1" width="40">
-                                    </div>
-                                    <div class="media-body">
-                                        <h5 class="media-heading">In mollis blandit tempor.</h5>
-                                        <small class="text-muted">23 Sec ago</small>
-                                    </div>
-                                </div>
-                            </a>
-
-                            <a href="#" class="btn btn-info btn-flat btn-block">View All Messages</a>
-
-                        </div>
-
-                    </div>
-                </li>
-                <li class="dropdown">
-                    <a href="#" data-toggle="dropdown"><i class="fa fa-bell-o"></i><span class="badge">3</span></a>
-                    <div class="dropdown-menu arrow pull-right md panel panel-default arrow-top-right notifications">
-                        <div class="panel-heading">
-                            Notification
-                        </div>
-
-                        <div class="list-group">
-
-                            <a href="#" class="list-group-item">
-                                <p>Installing App v1.2.1<small class="pull-right text-muted">45% Done</small></p>
-                                <div class="progress progress-xs no-margn progress-striped active">
-                                    <div class="progress-bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" style="width: 45%">
-                                        <span class="sr-only">45% Complete</span>
-                                    </div>
-                                </div>
-                            </a>
-
-                            <a href="#" class="list-group-item">
-                                Fusce dapibus molestie tincidunt. Quisque facilisis libero eget justo iaculis
-                            </a>
-
-                            <a href="#" class="list-group-item">
-                                <p>Server Status</p>
-                                <div class="progress progress-xs no-margn">
-                                    <div class="progress-bar progress-bar-success" style="width: 35%">
-                                        <span class="sr-only">35% Complete (success)</span>
-                                    </div>
-                                    <div class="progress-bar progress-bar-warning" style="width: 20%">
-                                        <span class="sr-only">20% Complete (warning)</span>
-                                    </div>
-                                    <div class="progress-bar progress-bar-danger" style="width: 10%">
-                                        <span class="sr-only">10% Complete (danger)</span>
-                                    </div>
-                                </div>
-                            </a>
 
 
-
-                            <a href="#" class="list-group-item">
-                                <div class="media">
-                                    <span class="label label-danger media-object img-circle pull-left">Danger</span>
-                                    <div class="media-body">
-                                        <h5 class="media-heading">Lorem ipsum dolor sit consect..</h5>
-                                    </div>
-                                </div>
-                            </a>
-
-
-                            <a href="#" class="list-group-item">
-                                <p>Server Status</p>
-                                <div class="progress progress-xs no-margn">
-                                    <div style="width: 60%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="60" role="progressbar" class="progress-bar progress-bar-info">
-                                        <span class="sr-only">60% Complete (warning)</span>
-                                    </div>
-                                </div>
-                            </a>
-
-
-                        </div>
-
-                    </div>
-                </li>
                 <li class="dropdown">
                     <a href="#" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></a>
                     <div class="dropdown-menu lg pull-right arrow panel panel-default arrow-top-right">
@@ -310,7 +182,7 @@
 
                 <div class="col-md-6">
                     <div class="panel panel-default">
-                        <div class="panel-heading">Monthly Users Subscription</div>
+                        <div class="panel-heading">Monthly User Subscription</div>
                         <div class="panel-body">
                             <div id="area-chart" style="height:250px;"></div>
                         </div>
@@ -319,7 +191,7 @@
 
                 <div class="col-md-6">
                     <div class="panel panel-default">
-                        <div class="panel-heading">Bar Chart</div>
+                        <div class="panel-heading">Categories Share</div>
                         <div class="panel-body">
                             <div id="bar-chart" style="height:250px;"></div>
                         </div>
@@ -390,7 +262,8 @@
     <!-- Custom JQuery -->
     <script src="~/Content/assets/js/app/custom.js" type="text/javascript"></script>
 @{
-    int[] p = (int[])Session["results"];
+    int[] thisyear = (int[])Session["thisyear"];
+    int[] lastyear = (int[])Session["last"];
     object[] multi = (object[])Session["multi"];
     int[] catvals = (int[])Session["catvals"];
     string[] catnames = (string[])Session["catnames"];
@@ -402,28 +275,34 @@
     $("#area-chart").dxChart({
         dataSource: [
 
-{ country: "January", y014: @p[0] },
-    { country: "February", y014: @p[1] },
-    { country: "March", y014: @p[2] },
-    { country: "April", y014: @p[3] },
-    { country: "May", y014: @p[4] },
-    { country: "June", y014: @p[5] },
-    { country: "July", y014: @p[6] }
+{ country: "January", y014: @thisyear[0], y65 : @lastyear[0] },
+    { country: "February", y014: @thisyear[1], y65 : @lastyear[1] },
+    { country: "March", y014: @thisyear[2], y65 : @lastyear[2] },
+    { country: "April", y014: @thisyear[3], y65 : @lastyear[3] },
+    { country: "May", y014: @thisyear[4], y65 : @lastyear[4] },
+    { country: "June", y014: @thisyear[5], y65 : @lastyear[5] },
+    { country: "July", y014: @thisyear[6], y65 : @lastyear[6] },
+    { country: "August", y014: @thisyear[7], y65 : @lastyear[7] },
+    { country: "September", y014: @thisyear[8], y65 : @lastyear[8] },
+    { country: "October", y014: @thisyear[9], y65 : @lastyear[9] },
+    { country: "November", y014: @thisyear[10], y65 : @lastyear[10] },
+    { country: "December", y014: @thisyear[11], y65 : @lastyear[11] }
         ],
         commonSeriesSettings: {
             type: "area",
             argumentField: "country"
         },
         series: [
-        { valueField: "y1564", name: "15-64 years", color: "#6ab704" },
-        { valueField: "y014", name: "0-14 years", color: "#7a34c3" },
-        { valueField: "y65", name: "65 years and older", color: "#fbcf04" }
+        
+        { valueField: "y1564", name: "Before 2014", color: "#fbcf04" },
+        { valueField: "y014", name: "2015", color: "#7a34c3" },
+        { valueField: "y65", name: "2014", color: "#6ab704" }
         ],
         argumentAxis:{
             valueMarginsEnabled: false
         },
         legend: {
-            visible: false
+            visible: true
         },
         valueAxis:{
             grid:{
@@ -444,28 +323,28 @@
             counter++;
             }
         ],
-            valueAxis:{
-                grid:{
-                    color: '#5EFEA5',
-                    width: 0.1
-                }
-            },
-            legend: {
-                visible: false,
-            },
-            series: {
-                argumentField: "day",
-                valueField: "oranges",
-                name: "My oranges",
-                visible: false,
-                type: "bar",
-                color: '#a49bc4'
+        valueAxis:{
+            grid:{
+                color: '#5EFEA5',
+                width: 0.1
             }
-        });
+        },
+        legend: {
+            visible: true,
+        },
+        series: {
+            argumentField: "day",
+            valueField: "oranges",
+            name: "Ideas",
+            visible: false,
+            type: "bar",
+            color: '#66CCFF'
+        }
+    });
 
 
 
-    </script>
+</script>
 
 
 

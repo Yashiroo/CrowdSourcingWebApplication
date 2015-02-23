@@ -85,7 +85,13 @@
         <nav class="navigation">
             <ul class="list-unstyled">
                 <li ><a href=@Url.Action("Index")><i class="fa fa-bookmark-o"></i><span class="nav-label">Dashboard</span></a></li>
-                <li class="active"><a href=@Url.Action("TenantDetails")><i class="fa fa-bookmark-o"></i><span class="nav-label">Tenant</span></a></li>
+                <li class="active" class="has-submenu">
+                    <a href=@Url.Action("#")><i class="fa fa-bookmark-o"></i><span class="nav-label">Tenant</span></a>
+                    <ul class="list-unstyled">
+                        <li><a href=@Url.Action("TenantDetails")>My Information</a></li>
+                        <li><a href=@Url.Action("IdeaReviewers")>Idea Reviewers</a></li>
+                    </ul>
+                </li>
                 <li>
                     <a href="#"><i class="fa fa-comment-o"></i> <span class="nav-label">Templates</span></a>
                 </li>
