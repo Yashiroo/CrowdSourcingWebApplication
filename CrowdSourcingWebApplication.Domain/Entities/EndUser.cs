@@ -8,7 +8,10 @@ namespace CrowdSourcingWebApplication.Domain.Entities
 {
     public class EndUser : BaseUser
     {
-
+        public EndUser(DateTime subdate)
+        {
+            this.SubscriptionDate = subdate;
+        }
 
     }
 }

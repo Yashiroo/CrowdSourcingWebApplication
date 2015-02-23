@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CrowdSourcingWebApplication.Service
+namespace CrowdSourcingWebApplication.Domain.Entities
 {
-    public class Class1
+    public class Tenant : BaseUser
     {
+        
     }
 }
