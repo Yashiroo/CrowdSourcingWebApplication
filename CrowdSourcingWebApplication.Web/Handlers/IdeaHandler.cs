@@ -20,6 +20,12 @@ namespace CrowdSourcingWebApplication.Web.Handlers
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
             HttpResponseMessage response = client.GetAsync(client.BaseAddress).Result;
+
+            // HttpRequestMessage f = new HttpRequestMessage(HttpMethod.Get, client.BaseAddress);
+            
+
+
+            
             IEnumerable<Idea> ideas = JsonConvert.DeserializeObject<Idea[]>(response.Content.ReadAsStringAsync().Result);
             return ideas;
 
