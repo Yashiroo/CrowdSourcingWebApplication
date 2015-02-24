@@ -1,4 +1,5 @@
-﻿@using CrowdSourcingWebApplication.Domain.Entities;
+﻿@model CrowdSourcingWebApplication.Domain.Entities.Tenant
+@using CrowdSourcingWebApplication.Domain.Entities;
 @{
     Layout = null;
 } 
@@ -6,8 +7,8 @@
 <html lang="en">
 <use master="EmptyMaster" />
 <head>
+    <title>Tenant Control Panel - Dashboard</title>
   @{
-      ViewBag.Title = "Tenant Control Panel";
       ViewBag.ExcludeMenu = true;
       int numusers = (int)Session["numusers"];
       int totalideas = (int)Session["totalideas"];
@@ -78,18 +79,11 @@
 	<aside class="left-panel">
     		
             <div class="user text-center">
-                  <img src="~/Content/assets/images/avtar/user.png" class="img-circle" alt="...">
-                  <h4 class="user-name">Tenant Name</h4>
+                  <img src="~/Content/assets/images/avtar/tenant.jpg" class="img-circle" alt="...">
+                  <h4 class="user-name">@Model.Username</h4>
                   
                   <div class="dropdown user-login">
-                  <button class="btn btn-xs dropdown-toggle btn-rounded" type="button" data-toggle="dropdown" aria-expanded="true">
-                    <i class="fa fa-circle status-icon available"></i> Available <i class="fa fa-angle-down"></i>
-                  </button>
-                  <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                    <li role="presentation"><a role="menuitem" href="#"><i class="fa fa-circle status-icon busy"></i> Busy</a></li>
-                    <li role="presentation"><a role="menuitem" href="#"><i class="fa fa-circle status-icon invisibled"></i> Invisible</a></li>
-                    <li role="presentation"><a role="menuitem" href="#"><i class="fa fa-circle status-icon signout"></i> Sign out</a></li>
-                  </ul>
+
                   </div>	 
             </div>
             
@@ -102,9 +96,10 @@
                         <a href=@Url.Action("#")><i class="fa fa-bookmark-o"></i><span class="nav-label">Tenant</span></a>
                         <ul class="list-unstyled">
                             <li><a href=@Url.Action("TenantDetails")>My Information</a></li>
-                            <li><a href=@Url.Action("IdeaReviewers")>Idea Reviewers</a></li>
+                            <li><a href=@Url.Action("IdeaReviewer")>Idea Reviewers</a></li>
                         </ul>
-                    </li>                    <li ><a href="#"><i class="fa fa-comment-o"></i> <span class="nav-label">Templates</span></a>
+                    </li>
+                    <li ><a href=@Url.Action("Templates")><i class="fa fa-comment-o"></i> <span class="nav-label">Templates</span></a>
                     </li>
                     <li class="has-submenu">
                         <a href="#"><i class="fa fa-flag-o"></i> <span class="nav-label">Categories</span></a>
@@ -126,7 +121,7 @@
     <!-- Aside Ends-->
     
     <section class="content">
-    	
+
         <header class="top-head container-fluid">
             <button type="button" class="navbar-toggle pull-left">
                 <span class="sr-only">Toggle navigation</span>
@@ -134,53 +129,38 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            
-            <form role="search" class="navbar-left app-search pull-left hidden-xs">
-              <input type="text" placeholder="Enter keywords..." class="form-control form-control-circle">
-         	</form>
-            
-            <nav class=" navbar-default hidden-xs" role="navigation">
-                <ul class="nav navbar-nav">
-                <li><a href="#">Link</a></li>
-                <li class="dropdown">
-                  <a data-toggle="dropdown" class="dropdown-toggle" href="#">Dropdown <span class="caret"></span></a>
-                  <ul role="menu" class="dropdown-menu">
-                    <li><a href="#">Action</a></li>
-                    <li><a href="#">Another action</a></li>
-                    <li><a href="#">Something else here</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">Separated link</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#">One more separated link</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </nav>
-            
-            <ul class="nav-toolbar">
-            	
-          
 
-                <li class="dropdown"><a href="#" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></a>
-                	<div class="dropdown-menu lg pull-right arrow panel panel-default arrow-top-right">
-                    	<div class="panel-heading">
-                        	More Apps
+
+
+            <nav class=" navbar-default hidden-xs" role="navigation">
+
+            </nav>
+
+            <ul class="nav-toolbar">
+
+
+
+                <li class="dropdown">
+                    <a href="#" data-toggle="dropdown"><i class="fa fa-ellipsis-v"></i></a>
+                    <div class="dropdown-menu lg pull-right arrow panel panel-default arrow-top-right">
+                        <div class="panel-heading">
+                            More Apps
                         </div>
                         <div class="panel-body text-center">
-                        	<div class="row">
-                            	<div class="col-xs-6 col-sm-4"><a href="#" class="text-green"><span class="h2"><i class="fa fa-envelope-o"></i></span><p class="text-gray no-margn">Messages</p></a></div>
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-4"><a href="#" class="text-green"><span class="h2"><i class="fa fa-envelope-o"></i></span><p class="text-gray no-margn">Messages</p></a></div>
                                 <div class="col-xs-6 col-sm-4"><a href="#" class="text-purple"><span class="h2"><i class="fa fa-calendar-o"></i></span><p class="text-gray no-margn">Events</p></a></div>
-                                
+
                                 <div class="col-xs-12 visible-xs-block"><hr></div>
-                                
+
                                 <div class="col-xs-6 col-sm-4"><a href="#" class="text-red"><span class="h2"><i class="fa fa-comments-o"></i></span><p class="text-gray no-margn">Chatting</p></a></div>
-                                
+
                                 <div class="col-lg-12 col-md-12 col-sm-12  hidden-xs"><hr></div>
-                            
-                            	<div class="col-xs-6 col-sm-4"><a href="#" class="text-yellow"><span class="h2"><i class="fa fa-folder-open-o"></i></span><p class="text-gray">Folders</p></a></div>
-                                
+
+                                <div class="col-xs-6 col-sm-4"><a href="#" class="text-yellow"><span class="h2"><i class="fa fa-folder-open-o"></i></span><p class="text-gray">Folders</p></a></div>
+
                                 <div class="col-xs-12 visible-xs-block"><hr></div>
-                                
+
                                 <div class="col-xs-6 col-sm-4"><a href="#" class="text-primary"><span class="h2"><i class="fa fa-flag-o"></i></span><p class="text-gray">Task</p></a></div>
                                 <div class="col-xs-6 col-sm-4"><a href="#" class="text-info"><span class="h2"><i class="fa fa-star-o"></i></span><p class="text-gray">Favorites</p></a></div>
                             </div>
@@ -190,39 +170,39 @@
             </ul>
         </header>
         <!-- Header Ends -->
-        
-        
+
+
         <div class="warper container-fluid">
-        	
+
             <div class="page-header"><h1>Dashboard <small>Let's get a quick overview...</small></h1></div>
-            
-            
+
+
             <div class="row">
-            
-            	<div class="col-md-3 col-sm-6">
-                	<div class="panel panel-default clearfix dashboard-stats rounded">
-                    	<span id="dashboard-stats-sparkline2" class="sparkline transit"></span>
-                    	<i class="fa fa-tags bg-info transit stats-icon"></i>
+
+                <div class="col-md-3 col-sm-6">
+                    <div class="panel panel-default clearfix dashboard-stats rounded">
+                        <span id="dashboard-stats-sparkline2" class="sparkline transit"></span>
+                        <i class="fa fa-tags bg-info transit stats-icon"></i>
                         <h3 class="transit">@totalideas <small class="text-green"><i class="fa fa-caret-up"></i> 8%</small></h3>
                         <p class="text-muted transit">Total Threads</p>
                     </div>
                 </div>
 
                 <div class="col-md-3 col-sm-6">
-                	<div class="panel panel-default clearfix dashboard-stats rounded">
-                    	<span id="dashboard-stats-sparkline3" class="sparkline transit"></span>
-                    	<i class="fa fa-user bg-success transit stats-icon"></i>
+                    <div class="panel panel-default clearfix dashboard-stats rounded">
+                        <span id="dashboard-stats-sparkline3" class="sparkline transit"></span>
+                        <i class="fa fa-user bg-success transit stats-icon"></i>
                         <h3 class="transit">@numusers <small class="text-green"><i class="fa fa-caret-up"></i> 9%</small></h3>
                         <p class="text-muted transit">Total Users</p>
                     </div>
                 </div>
 
-            
+
             </div>
-            
-            
+
+
             <div class="row">
-            	<div class="col-lg-6">
+                <div class="col-lg-6">
                     <!-- AREA TO MODIFY ---------------------------------------------------------------------------------------------------------->
                     <div class="row">
                         <div class="col-lg-12">
@@ -276,90 +256,90 @@
                 </div>
                 <div class="col-lg-2">
                 </div>
-                    <!-- DELETED ITEM angular js to do list-->
-                    <div class="col-lg-6">
+                <!-- DELETED ITEM angular js to do list-->
+                <div class="col-lg-6">
 
-                        <ul class="nav nav-tabs" role="tablist">
-                            <li class="active"><a href="#activities" role="tab" data-toggle="tab"><span class="hidden-xs">Recent</span> Activities</a></li>
-                        </ul>
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="active"><a href="#activities" role="tab" data-toggle="tab"><span class="hidden-xs">Recent</span> Activities</a></li>
+                    </ul>
 
-                        <div class="tab-content">
-
-
-
-                            <div class="panel panel-default tab-pane tabs-up active" id="activities">
-                                <div class="panel-body">
-                                    <ul class="activities-list list-unstyled nicescroll">
-                                        @foreach (Log log in logs)
-                                        {
-
-                                            <li class="@log.EventType-activity">
-                                                <span class="time">@log.EventDate</span>
-                                                <p class="text-@log.EventType">@log.Event</p>
-
-                                            </li>
-                                        }
+                    <div class="tab-content">
 
 
-                                    </ul>
-                                </div>
 
+                        <div class="panel panel-default tab-pane tabs-up active" id="activities">
+                            <div class="panel-body">
+                                <ul class="activities-list list-unstyled nicescroll">
+                                    @foreach (Log log in logs)
+                                    {
+
+                                        <li class="@log.EventType-activity">
+                                            <span class="time">@log.EventDate</span>
+                                            <p class="text-@log.EventType">@log.Event</p>
+
+                                        </li>
+                                    }
+
+
+                                </ul>
                             </div>
 
                         </div>
 
                     </div>
 
-
-
-
-
                 </div>
-            
-            <div class="row">
-            	<div class="col-lg-6">
-                
-                	<div class="row">
-                    	<div class="col-lg-6">
-                                <!-- DELETED ITEM -->
-                        </div>
-                        <div class="col-lg-6">
-                                <!-- DELETED ITEM -->
-                        </div>
-                    </div>
-                    
 
-                	
-                    <div class="row">
-                    	<div class="col-lg-12">
-                                <!-- DELETED ITEM -->                                	
-                                    
-                                    
-                                </div>
-                        </div>
-                    </div>
-                
-                	
-                
-                	
-                	
-                </div>
 
 
 
 
             </div>
-            
+
+            <div class="row">
+                <div class="col-lg-6">
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <!-- DELETED ITEM -->
+                        </div>
+                        <div class="col-lg-6">
+                            <!-- DELETED ITEM -->
+                        </div>
+                    </div>
+
+
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <!-- DELETED ITEM -->
+
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+            </div>
+
+
+
+
         </div>
+
         <!-- Warper Ends Here (working area) -->
-        
+    </section>
+
         
         <footer class="container-fluid footer">
-
+            <a href="#" class="pull-right scrollToTop"><i class="fa fa-chevron-up"></i></a>
         </footer>
         
     
-    </section>
+   
     <!-- Content Block Ends Here (right box)-->
     
     

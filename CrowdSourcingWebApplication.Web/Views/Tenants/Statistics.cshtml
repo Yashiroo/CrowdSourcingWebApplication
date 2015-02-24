@@ -6,8 +6,9 @@
 <html lang="en">
 <use master="EmptyMaster" />
 <head>
+    <title>Tenant Control Panel - Statistics</title>
+
 @{
-        ViewBag.Title = "Tenant Control Panel";
         ViewBag.ExcludeMenu = true;
 }
 
@@ -86,14 +87,15 @@
         <nav class="navigation">
             <ul class="list-unstyled">
                 <li><a href=@Url.Action("Index")><i class="fa fa-bookmark-o"></i><span class="nav-label">Dashboard</span></a></li>
-                <li class="active" class="has-submenu">
+                <li class="has-submenu">
                     <a href=@Url.Action("#")><i class="fa fa-bookmark-o"></i><span class="nav-label">Tenant</span></a>
                     <ul class="list-unstyled">
                         <li><a href=@Url.Action("TenantDetails")>My Information</a></li>
-                        <li><a href=@Url.Action("IdeaReviewers")>Idea Reviewers</a></li>
+                        <li><a href=@Url.Action("IdeaReviewer")>Idea Reviewers</a></li>
                     </ul>
-                </li>                <li>
-                    <a href="#"><i class="fa fa-comment-o"></i> <span class="nav-label">Templates</span></a>
+                </li>                
+                <li>
+                    <a href=@Url.Action("Templates")><i class="fa fa-comment-o"></i> <span class="nav-label">Templates</span></a>
                 </li>
                 <li class="has-submenu">
                     <a href="#"><i class="fa fa-flag-o"></i> <span class="nav-label">Categories</span></a>
@@ -126,14 +128,9 @@
                 <span class="icon-bar"></span>
             </button>
 
-            <form role="search" class="navbar-left app-search pull-left hidden-xs">
-                <input type="text" placeholder="Enter keywords..." class="form-control form-control-circle">
-            </form>
 
             <nav class=" navbar-default hidden-xs" role="navigation">
-                <ul class="nav navbar-nav">
-
-                </ul>
+                <ul class="nav navbar-nav"></ul>
             </nav>
 
             <ul class="nav-toolbar">
@@ -200,7 +197,7 @@
                 <div class="col-md-6">
                     <canvas id="myChart" width="400" height="400"></canvas>
                 </div>
-                </div>
+            </div>
 
 
 
@@ -212,12 +209,14 @@
 
 
         <!-- Warper Ends Here (working area) -->
-
-
-        <footer class="container-fluid footer"></footer>
-
-
     </section>
+
+        <footer class="container-fluid footer">
+            <a href="#" class="pull-right scrollToTop"><i class="fa fa-chevron-up"></i></a>
+        </footer>
+
+
+    
 
 
     <!-- Content Block Ends Here (right box)-->

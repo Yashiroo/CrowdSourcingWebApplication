@@ -846,9 +846,11 @@
     <Content Include="Views\Shared\Bootstrap_layout.cshtml" />
     <Content Include="Views\Tenants\Categories.cshtml" />
     <Content Include="Views\Tenants\AddCategory.cshtml" />
+    <Content Include="Views\Tenants\IdeaReviewer.cshtml" />
     <None Include="Views\Tenants\index.cshtml" />
     <Content Include="Views\Tenants\TenantDetails.cshtml" />
     <Content Include="Views\Tenants\Statistics.cshtml" />
+    <Content Include="Views\Tenants\Templates.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

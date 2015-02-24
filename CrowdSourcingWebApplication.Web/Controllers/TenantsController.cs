@@ -153,7 +153,7 @@ namespace CrowdSourcingWebApplication.Web.Controllers
             Session["logs"] = logs;
             Session["numusers"] = endusers.Count;
             Session["totalideas"] = ideas.Count();
-            return View();
+            return View(tenant);
             
         }
 
@@ -167,9 +167,16 @@ namespace CrowdSourcingWebApplication.Web.Controllers
         }
         
 
-
+        
         public ActionResult Templates()
         {
+            Session["tenant"] = tenant;
+            return View();
+        }
+
+        public ActionResult IdeaReviewer()
+        {
+            Session["tenant"] = tenant;
             return View();
         }
 
@@ -184,10 +191,8 @@ namespace CrowdSourcingWebApplication.Web.Controllers
         [HttpGet]
         public ActionResult AddCategory()
         {
-                //Category p = category as Category;
-                //Session["Category"] = p;
-                //return RedirectToAction("Categories");
-                
+            
+            Session["tenant"] = tenant;
                 return View();
  
         }
@@ -241,8 +246,17 @@ namespace CrowdSourcingWebApplication.Web.Controllers
             }
             var code = handler.DeleteCategory(category);
             if (code == System.Net.HttpStatusCode.Accepted)
+            {
+                LogHandler lhandler = new LogHandler();
+                Log log = new Log();
+                log.EventDate = DateTime.Now;
+                log.TenantMail = tenant.Email;
+                log.EventType = "Category";
+                log.Event = "You have deleted the category : " + category.Title;
+                lhandler.AddLog(log);
                 return RedirectToAction("Categories");
-            else 
+            }
+            else
                 return RedirectToAction("Index");
   
         }

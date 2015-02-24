@@ -2,17 +2,14 @@
 @{
     Layout = null;
 }
-
 <!DOCTYPE html>
 <html lang="en">
 <use master="EmptyMaster" />
 <head>
-    <title>Tenant Control Panel - Categories Management</title>
+    <title>Tenant Control Panel - Title</title>
     @{
         ViewBag.ExcludeMenu = true;
-        
-        IEnumerable<Category> categories = (IEnumerable<Category>)Session["categories"];
-        int counter = 1;
+        Tenant tenant = (Tenant)Session["tenant"];
     }
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -70,17 +67,10 @@
 
         <div class="user text-center">
             <img src="~/Content/assets/images/avtar/tenant.jpg" class="img-circle" alt="...">
-            <h4 class="user-name">Tenant Name</h4>
+            <h4 class="user-name">@tenant.Username</h4>
 
             <div class="dropdown user-login">
-                <button class="btn btn-xs dropdown-toggle btn-rounded" type="button" data-toggle="dropdown" aria-expanded="true">
-                    <i class="fa fa-circle status-icon available"></i> Available <i class="fa fa-angle-down"></i>
-                </button>
-                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                    <li role="presentation"><a role="menuitem" href="#"><i class="fa fa-circle status-icon busy"></i> Busy</a></li>
-                    <li role="presentation"><a role="menuitem" href="#"><i class="fa fa-circle status-icon invisibled"></i> Invisible</a></li>
-                    <li role="presentation"><a role="menuitem" href="#"><i class="fa fa-circle status-icon signout"></i> Sign out</a></li>
-                </ul>
+
             </div>
         </div>
 
@@ -89,11 +79,17 @@
         <nav class="navigation">
             <ul class="list-unstyled">
                 <li><a href=@Url.Action("Index")><i class="fa fa-bookmark-o"></i><span class="nav-label">Dashboard</span></a></li>
-                <li><a href=@Url.Action("TenantDetails")><i class="fa fa-bookmark-o"></i><span class="nav-label">Tenant</span></a></li>
+                <li class="active has-submenu">
+                    <a href=@Url.Action("#")><i class="fa fa-bookmark-o"></i><span class="nav-label">Tenant</span></a>
+                    <ul class="list-unstyled">
+                        <li><a href=@Url.Action("TenantDetails")>My Information</a></li>
+                        <li><a href=@Url.Action("IdeaReviewer")>Idea Reviewers</a></li>
+                    </ul>
+                </li>
                 <li>
                     <a href=@Url.Action("Templates")><i class="fa fa-comment-o"></i> <span class="nav-label">Templates</span></a>
                 </li>
-                <li class="active has-submenu">
+                <li class="has-submenu">
                     <a href="#"><i class="fa fa-flag-o"></i> <span class="nav-label">Categories</span></a>
                     <ul class="list-unstyled">
                         <li><a href=@Url.Action("AddCategory")>Add Category</a></li>
@@ -166,79 +162,52 @@
 
         <div class="warper container-fluid">
 
-            <div class="page-header"><h1>Categories <small></small></h1></div>
+            <div class="page-header"><h1>title here <small></small></h1></div>
 
+            <!-- AREA TO MODIFY -->
 
             <div class="row">
 
 
 
             </div>
-
-            <!-- AREA TO MODIFY -->
-
-
+            
 
             <div class="page-header"><h3> <small> </small></h3></div>
 
             <div class="row">
 
+                <div class="col-md-12">
 
-
-
-
-                <div class="panel panel-default">
-                    <div class="panel-heading">Categories Management</div>
-                    <div class="panel-body table-responsive">
-
-                        <table class="table table-bordered">
-                            <thead>
-                                <tr>
-                                    <th>#</th>
-                                    <th>Name</th>
-                                    <th>Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach (Category c in categories)
-                                {
-                                    <tr>
-                                        <td>@counter</td>
-                                        <td>@c.Title</td>
-                                        <td>
-                                            <form action="/Tenants/DeleteCategory" method="post">
-
-                                                @Html.ActionLink("Delete", "DeleteCategory", new { categoryid = c.CategoryId })
-                                            </form>
-
-                                        </td>
-                                    </tr>
-                                    counter++;
-                                }
-                            </tbody>
-                        </table>
-
-                    </div>
                 </div>
-
-
-
-
 
             </div>
 
 
+
+
+
+
             <!-- END OF AREA TO MODIFY -->
+        
+        
+        
+        
         </div>
+
+
+
+
+
         <!-- Warper Ends Here (working area) -->
     </section>
 
-        <footer class="container-fluid footer">
-            <a href="#" class="pull-right scrollToTop"><i class="fa fa-chevron-up"></i></a>
-        </footer>
+    <footer class="container-fluid footer">
+        <a href="#" class="pull-right scrollToTop"><i class="fa fa-chevron-up"></i></a>
+    </footer>
 
 
-   
+
     <!-- Content Block Ends Here (right box)-->
     <!-- JQuery v1.9.1 -->
     <script src="~/Content/assets/js/jquery/jquery-1.9.1.min.js" type="text/javascript"></script>
