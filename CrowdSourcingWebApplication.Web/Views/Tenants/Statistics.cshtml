@@ -1,6 +1,8 @@
 ﻿@model IEnumerable<CrowdSourcingWebApplication.Domain.Entities.EndUser>
+@using CrowdSourcingWebApplication.Domain.Entities;
 @{
     Layout = null;
+    Tenant tenant = (Tenant)Session["tenant"];
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -67,18 +69,11 @@
     <aside class="left-panel">
 
         <div class="user text-center">
-            <img src="~/Content/assets/images/avtar/user.png" class="img-circle" alt="...">
-            <h4 class="user-name">Tenant Name</h4>
+            <img src="~/Content/assets/images/avtar/tenant.jpg" class="img-circle" alt="...">
+            <h4 class="user-name">@tenant.Username</h4>
 
             <div class="dropdown user-login">
-                <button class="btn btn-xs dropdown-toggle btn-rounded" type="button" data-toggle="dropdown" aria-expanded="true">
-                    <i class="fa fa-circle status-icon available"></i> Available <i class="fa fa-angle-down"></i>
-                </button>
-                <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-                    <li role="presentation"><a role="menuitem" href="#"><i class="fa fa-circle status-icon busy"></i> Busy</a></li>
-                    <li role="presentation"><a role="menuitem" href="#"><i class="fa fa-circle status-icon invisibled"></i> Invisible</a></li>
-                    <li role="presentation"><a role="menuitem" href="#"><i class="fa fa-circle status-icon signout"></i> Sign out</a></li>
-                </ul>
+
             </div>
         </div>
 
@@ -91,7 +86,7 @@
                     <a href=@Url.Action("#")><i class="fa fa-bookmark-o"></i><span class="nav-label">Tenant</span></a>
                     <ul class="list-unstyled">
                         <li><a href=@Url.Action("TenantDetails")>My Information</a></li>
-                        <li><a href=@Url.Action("IdeaReviewer")>Idea Reviewers</a></li>
+                        <li><a href=@Url.Action("Index","IdeaReviewer")>Idea Reviewers</a></li>
                     </ul>
                 </li>                
                 <li>

@@ -45,12 +45,66 @@
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.1.2\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Azure.ActiveDirectory.GraphClient">
+      <HintPath>..\..\WebApp-GraphAPI-DotNet\packages\Microsoft.Azure.ActiveDirectory.GraphClient.2.0.5\lib\portable-net40+wp8+win8+MonoAndroid10+MonoTouch10+WindowsPhoneApp81\Microsoft.Azure.ActiveDirectory.GraphClient.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Data.Edm, Version=5.6.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Data.Edm.5.6.3\lib\net40\Microsoft.Data.Edm.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.OData, Version=5.6.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Data.OData.5.6.3\lib\net40\Microsoft.Data.OData.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Services, Version=5.6.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Data.Services.5.6.3\lib\net40\Microsoft.Data.Services.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Data.Services.Client, Version=5.6.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.Data.Services.Client.5.6.3\lib\net40\Microsoft.Data.Services.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory">
+      <HintPath>..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.14.201151115\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms">
+      <HintPath>..\packages\Microsoft.IdentityModel.Clients.ActiveDirectory.2.14.201151115\lib\net45\Microsoft.IdentityModel.Clients.ActiveDirectory.WindowsForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Protocol.Extensions">
+      <HintPath>..\packages\Microsoft.IdentityModel.Protocol.Extensions.1.0.0\lib\net45\Microsoft.IdentityModel.Protocol.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security">
+      <HintPath>..\packages\Microsoft.Owin.Security.3.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.3.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OpenIdConnect">
+      <HintPath>..\packages\Microsoft.Owin.Security.OpenIdConnect.3.0.1\lib\net45\Microsoft.Owin.Security.OpenIdConnect.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IdentityModel" />
+    <Reference Include="System.IdentityModel.Tokens.Jwt">
+      <HintPath>..\packages\System.IdentityModel.Tokens.Jwt.4.0.0\lib\net45\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+    </Reference>
     <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Spatial, Version=5.6.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\System.Spatial.5.6.3\lib\net40\System.Spatial.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -119,36 +173,104 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IdeaReviewerController.cs" />
+    <Compile Include="Controllers\SubscribeController.cs" />
     <Compile Include="Controllers\TenantsController.cs" />
+    <Compile Include="Controllers\UserProfileController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Handlers\CategoryHandler.cs" />
     <Compile Include="Handlers\IdeaHandler.cs" />
     <Compile Include="Handlers\LogHandler.cs" />
+    <Compile Include="Handlers\UserHandler.cs" />
+    <Compile Include="Models\passwordProfile.cs" />
+    <Compile Include="Models\TodoItem.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\UserProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+    <Compile Include="Utils\AuthenticationHelper.cs" />
+    <Compile Include="Utils\Constants.cs" />
+    <Compile Include="Utils\GraphConfiguration.cs" />
+    <Compile Include="Utils\Helper.cs" />
+    <Compile Include="Utils\Logger.cs" />
+    <Compile Include="Utils\NaiveSessionCache.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\index\magnific-popup.css" />
+    <Content Include="Content\index\slider.css" />
+    <Content Include="Content\index\style.css" />
+    <Content Include="Content\magnific-popup.css" />
+    <Content Include="Content\slider.css" />
+    <Content Include="Content\style.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\browser.png" />
+    <Content Include="Images\browser1.png" />
+    <Content Include="Images\browser2.png" />
+    <Content Include="Images\browser3.png" />
+    <Content Include="Images\browser4.png" />
+    <Content Include="Images\browser6.png" />
+    <Content Include="Images\bubble.png" />
+    <Content Include="Images\chart.png" />
+    <Content Include="Images\cloud-icon.png" />
+    <Content Include="Images\cloud.png" />
+    <Content Include="Images\clouds.png" />
+    <Content Include="Images\comments.png" />
+    <Content Include="Images\cross.png" />
+    <Content Include="Images\down-arrow.png" />
+    <Content Include="Images\dribble.png" />
+    <Content Include="Images\email.png" />
+    <Content Include="Images\emailbox.png" />
+    <Content Include="Images\facebook.png" />
+    <Content Include="Images\like.png" />
+    <Content Include="Images\logo.png" />
+    <Content Include="Images\right_arrow.png" />
+    <Content Include="Images\rss.png" />
+    <Content Include="Images\slider-img3.png" />
+    <Content Include="Images\slider-img4.png" />
+    <Content Include="Images\sprite.png" />
+    <Content Include="Images\sprites.png" />
+    <Content Include="Images\system.png" />
+    <Content Include="Images\twitter.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <None Include="Properties\PublishProfiles\crowdsourcingwebapplication.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\index\jquery.easydropdown.js" />
+    <Content Include="Scripts\index\jquery.magnific-popup.js" />
+    <Content Include="Scripts\index\jquery.min.js" />
+    <Content Include="Scripts\index\jquery.nivo.slider.js" />
+    <Content Include="Scripts\index\jquery.sliderTabs.min.js" />
+    <Content Include="Scripts\index\jquery.wmuSlider.js" />
+    <Content Include="Scripts\index\modernizr.custom.min.js" />
+    <Content Include="Scripts\index\script.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.easydropdown.js" />
+    <Content Include="Scripts\jquery.magnific-popup.js" />
+    <Content Include="Scripts\jquery.min.js" />
+    <Content Include="Scripts\jquery.nivo.slider.js" />
+    <Content Include="Scripts\jquery.sliderTabs.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\jquery.wmuSlider.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\modernizr.custom.min.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\script.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Content\assets\css\app\app.v1.css" />
     <Content Include="Content\assets\css\app\email.css" />
@@ -739,7 +861,9 @@
     <Content Include="Content\assets\js\plugins\typehead\typeahead.bundle-conf.js" />
     <Content Include="Content\assets\js\plugins\typehead\typeahead.bundle.js" />
     <Content Include="Content\assets\js\plugins\underscore\underscore-min.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -847,6 +971,12 @@
     <Content Include="Views\Tenants\Categories.cshtml" />
     <Content Include="Views\Tenants\AddCategory.cshtml" />
     <Content Include="Views\Tenants\IdeaReviewer.cshtml" />
+    <Content Include="Views\Subscribe\Index.cshtml" />
+    <Content Include="Views\IdeaReviewer\Index.cshtml" />
+    <Content Include="Views\IdeaReviewer\Details.cshtml" />
+    <Content Include="Views\IdeaReviewer\Create.cshtml" />
+    <Content Include="Views\IdeaReviewer\Edit.cshtml" />
+    <Content Include="Views\IdeaReviewer\Delete.cshtml" />
     <None Include="Views\Tenants\index.cshtml" />
     <Content Include="Views\Tenants\TenantDetails.cshtml" />
     <Content Include="Views\Tenants\Statistics.cshtml" />
@@ -856,7 +986,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Content\assets\images\bg\" />
     <Folder Include="Content\assets\js\plugins\filebrowser\demo-files\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -874,6 +1003,9 @@
       <Project>{bd1d7927-747a-4d1a-985a-ba3eb8e91832}</Project>
       <Name>CrowdSourcingWebApplication.Service</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

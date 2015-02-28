@@ -13,6 +13,7 @@
       int numusers = (int)Session["numusers"];
       int totalideas = (int)Session["totalideas"];
       IEnumerable<Log> logs = (IEnumerable<Log>)Session["logs"];
+      Tenant tenant = (Tenant)Session["tenant"];
       
       foreach (Log log in logs)
       {
@@ -96,7 +97,7 @@
                         <a href=@Url.Action("#")><i class="fa fa-bookmark-o"></i><span class="nav-label">Tenant</span></a>
                         <ul class="list-unstyled">
                             <li><a href=@Url.Action("TenantDetails")>My Information</a></li>
-                            <li><a href=@Url.Action("IdeaReviewer")>Idea Reviewers</a></li>
+                            <li><a href=@Url.Action("Index","IdeaReviewer")>Idea Reviewers</a></li>
                         </ul>
                     </li>
                     <li ><a href=@Url.Action("Templates")><i class="fa fa-comment-o"></i> <span class="nav-label">Templates</span></a>

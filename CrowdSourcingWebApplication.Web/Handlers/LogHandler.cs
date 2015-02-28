@@ -37,7 +37,7 @@ namespace CrowdSourcingWebApplication.Web.Handlers
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
 
-            DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(Category));
+            DataContractJsonSerializer ser = new DataContractJsonSerializer(typeof(Log));
             HttpContent content = new ObjectContent<Log>(l, new JsonMediaTypeFormatter());
             var requestMessage = new HttpRequestMessage();
             var response = client.PostAsync(client.BaseAddress, content);

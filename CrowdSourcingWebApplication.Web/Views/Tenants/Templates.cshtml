@@ -1,4 +1,5 @@
-﻿@using CrowdSourcingWebApplication.Domain.Entities;
+﻿@model CrowdSourcingWebApplication.Web.Models.User
+@using CrowdSourcingWebApplication.Domain.Entities;
 @{
     Layout = null;
 }
@@ -83,7 +84,7 @@
                     <a href=@Url.Action("#")><i class="fa fa-bookmark-o"></i><span class="nav-label">Tenant</span></a>
                     <ul class="list-unstyled">
                         <li><a href=@Url.Action("TenantDetails")>My Information</a></li>
-                        <li><a href=@Url.Action("IdeaReviewer")>Idea Reviewers</a></li>
+                        <li><a href=@Url.Action("Index","IdeaReviewer")>Idea Reviewers</a></li>
                     </ul>
                 </li>
                 <li>
@@ -162,7 +163,7 @@
 
         <div class="warper container-fluid">
 
-            <div class="page-header"><h1>title here <small></small></h1></div>
+            <div class="page-header"><h1>Templates<small></small></h1></div>
 
             <!-- AREA TO MODIFY -->
 

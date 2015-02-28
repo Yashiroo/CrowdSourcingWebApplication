@@ -13,6 +13,8 @@ using CrowdSourcingWebApplication.Service;
 
 namespace CrowdSourcingWebApplication.Web.Controllers
 {
+
+
     public class TenantsController : Controller
     {
         BaseUser tenant;
@@ -33,7 +35,7 @@ namespace CrowdSourcingWebApplication.Web.Controllers
             tenant.Password = "*******";
             tenant.ImagePath = null;
             tenant.SubscriptionDate = DateTime.MinValue;
-            tenant.Username = "Lamjed.B";
+            tenant.Username = "Ramzi.Yahya";
             tenant.Role = null;
             tenant.enabled = true;
 
@@ -149,7 +151,7 @@ namespace CrowdSourcingWebApplication.Web.Controllers
             LogHandler lhandler = new LogHandler();
             IEnumerable<Log> logs = lhandler.GetLogsForTenant(tenant.Email);
             logs = logs.OrderByDescending(x => x.EventDate);
-
+            Session["tenant"] = tenant;
             Session["logs"] = logs;
             Session["numusers"] = endusers.Count;
             Session["totalideas"] = ideas.Count();
@@ -170,6 +172,7 @@ namespace CrowdSourcingWebApplication.Web.Controllers
         
         public ActionResult Templates()
         {
+
             Session["tenant"] = tenant;
             return View();
         }
@@ -182,6 +185,7 @@ namespace CrowdSourcingWebApplication.Web.Controllers
 
         public ActionResult Categories()
         {
+            Session["tenant"] = tenant;
             CategoryHandler handler = new CategoryHandler();
             categories = handler.GetCategory(tenant.Email);
             Session["categories"] = categories;
@@ -201,6 +205,7 @@ namespace CrowdSourcingWebApplication.Web.Controllers
         [HttpPost]
         public ActionResult AddCategory(Category category)
         {
+            Session["tenant"] = tenant;
             if (category.Title != null & category.Title != "")
             {
                 CategoryHandler handler = new CategoryHandler();
@@ -267,7 +272,7 @@ namespace CrowdSourcingWebApplication.Web.Controllers
 
         public ActionResult Statistics()
         {
-            
+            Session["tenant"] = tenant;
             service = new WebAppService();
             int[] thisyear = service.GetEndusersStatsThisYear(endusers);
             int[] lastyear = service.GetEndusersStatsLastYear(endusers);
